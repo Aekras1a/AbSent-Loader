@@ -1,0 +1,6 @@
+- pipeline: "Update"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "master"
+  ref_type: "BRANCH"
+  do_not_create_commit_status: true
+  trigger_condition: "ON_CHANGE"
