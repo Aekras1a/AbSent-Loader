@@ -1,3 +1,4 @@
+[![buddy branch](https://app.buddy.works/7494742/absent-loader/repository/branch/master/badge.svg?token=e50eb3e972b11b822cafc5d825f50eba351ff4f675478b1bf94dab67d50a5c6d "buddy branch")](https://app.buddy.works/7494742/absent-loader/repository/branch/master)
 # AbSent-Loader
 Example Loader to be used as a learning resource for people interested in how commercially available malware is made.
 ## Definition of a loader
