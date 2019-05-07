@@ -56,7 +56,7 @@ namespace absent
 					{"gp", gpu},
 					{"ra", std::to_string(ram)},
 					{"vr", std::to_string(vram)},
-					{"fp", installedPrograms}
+					{"fp", installedPrograms},
 				};
 				return jInfo;
 			}

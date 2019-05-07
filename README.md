@@ -1,6 +1,9 @@
 [![buddy branch](https://app.buddy.works/7494742/absent-loader/repository/branch/master/badge.svg?token=e50eb3e972b11b822cafc5d825f50eba351ff4f675478b1bf94dab67d50a5c6d "buddy branch")](https://app.buddy.works/7494742/absent-loader/repository/branch/master)
 # AbSent-Loader
 Example Loader to be used as a learning resource for people interested in how commercially available malware is made.
+
+Join the discussion on discord: https://discord.gg/AMs6DA9
+
 ## Definition of a loader
 A "Loader" or "Dropper" is a type of malware not dissimilar to a botnet, usually built on the same C&C architecture they lack some of the more advanced features a fully featured botnet might have and instead try to be as lightweight as possible to be used as the 1st stage in an attack. 
 

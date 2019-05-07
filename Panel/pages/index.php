@@ -1,8 +1,8 @@
 <?php
-//include '../include/session.php';
-//include '../include/geo.php';
-//include '../include/stats.php';
-//$userperms = $odb->query("SELECT privileges FROM users WHERE username = '".$username."'")->fetchColumn(0);
+include '../include/session.php';
+include '../include/geo.php';
+include '../include/stats.php';
+$userperms = $odb->query("SELECT permissions FROM users WHERE username = '".$username."'")->fetchColumn(0);
 ?>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -25,24 +25,17 @@
         function drawRegionsMap() {
             var data = google.visualization.arrayToDataTable([
                 ['Country', 'Clients'],
-                ['Germany', 200],
-                ['United States', 300],
-                ['Brazil', 400],
-                ['Canada', 500],
-                ['France', 600],
-                ['RU', 700]
                 <?php
-                //$csel = $odb->query("SELECT country, COUNT(*) AS cnt FROM bots GROUP BY country ORDER BY cnt");
-                //while ($c = $csel->fetch())
-                //{
-                //    echo '[\'' . countryCodeToCountry($c[0]) . '\',';
-                //    echo $c[1] . '],' . PHP_EOL;
-                //}
+                $csel = $odb->query("SELECT country, COUNT(*) AS cnt FROM clients GROUP BY country ORDER BY cnt");
+                while ($c = $csel->fetch())
+                {
+                    echo "['".$c[0]."', ".$c[1]."],".PHP_EOL;
+                }
                 ?>
             ]);
             var options = {
                 backgroundColor: '#4e4e4e',
-                colorAxis: {colors: ['white', '#00bcd4']},
+                colorAxis: {colors: ['white', '#00bcd4']}
             };
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
             chart.draw(data, options);
@@ -56,7 +49,7 @@
             <div class="mdl-layout-spacer"></div>
 
             <div class="avatar-dropdown" id="icon">
-                <span>$username</span>
+                <span><?php echo $username; ?></span>
                 <img src="../images/avatar.png">
             </div>
 
@@ -65,8 +58,8 @@
                 for="icon">
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
-                        <span>$username</span>
-                        <span class="mdl-list__item-sub-title">$userperms</span>
+                        <span><?php echo $username; ?></span>
+                        <span class="mdl-list__item-sub-title"><?php echo $userperms; ?></span>
                     </span>
                 </li>
                 <li class="list__item--border-top"></li>
@@ -83,7 +76,7 @@
                     </a>
                 </li>
                 <li class="mdl-menu__item mdl-list__item">
-                    <a href="logout.php" class="mdl-list__item-primary-content">
+                    <a href="../include/logout.php?logout=1" class="mdl-list__item-primary-content">
                         <i class="material-icons mdl-list__item-icon">exit_to_app</i>
                         Logout
                     </a>
@@ -98,10 +91,6 @@
             <a class="mdl-navigation__link mdl-navigation__link--current" href="index.php">
                 <i class="material-icons" role="presentation">dashboard</i>
                 Dashboard
-            </a>
-            <a class="mdl-navigation__link" href="statistics.php">
-                <i class="material-icons" role="presentation">show_chart</i>
-                Statistics
             </a>
             <a class="mdl-navigation__link" href="clients.php">
                 <i class="material-icons" role="presentation">person</i>
@@ -123,7 +112,7 @@
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="">
-                                <center><h1>$total</h1></center>
+                                <center><h1><?php echo $total ?></h1></center>
                             </div>
                         </div>
                     </div>
@@ -135,7 +124,7 @@
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="">
-                                <center><h1>$online</h1></center>
+                                <center><h1><?php echo $online ?></h1></center>
                             </div>
                         </div>
                     </div>
@@ -147,7 +136,7 @@
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="">
-                                <center><h1>$offline</h1></center>
+                                <center><h1><?php echo $offline ?></h1></center>
                             </div>
                         </div>
                     </div>
@@ -159,7 +148,7 @@
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="">
-                                <center><h1>$dead</h1></center>
+                                <center><h1><?php echo $dead ?></h1></center>
                             </div>
                         </div>
                     </div>
