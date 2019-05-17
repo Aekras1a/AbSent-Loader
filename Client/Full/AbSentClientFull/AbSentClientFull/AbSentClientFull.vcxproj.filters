@@ -38,5 +38,11 @@
     <ClCompile Include="AbSentClientFull.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AbSent\tasks\startup.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\minicrt.lib" />
   </ItemGroup>
 </Project>

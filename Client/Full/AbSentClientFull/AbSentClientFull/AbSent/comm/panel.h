@@ -8,9 +8,9 @@ namespace absent
 		nlohmann::json decryptResponce(std::string res, std::string key)
 		{
 			absent::crypto::RC4 rc4;
-			nlohmann::json responce = nlohmann::json::parse(absent::crypto::b64::decode(res.c_str()));
-			for (auto& el : responce.items()) { std::string val = el.value(); el.value() = rc4.crypt(absent::crypto::b64::decode(val.c_str()), key); }
-			return responce;
+			nlohmann::json response = nlohmann::json::parse(absent::crypto::b64::decode(res.c_str()));
+			for (auto& el : response.items()) { std::string val = el.value(); el.value() = rc4.crypt(absent::crypto::b64::decode(val.c_str()), key); }
+			return response;
 
 		}
 
